@@ -1,7 +1,7 @@
    FROM python:3.10-slim
 
-   # Install ffmpeg
-   RUN apt-get update && apt-get install -y ffmpeg
+   # Install ffmpeg and git
+   RUN apt-get update && apt-get install -y ffmpeg git
 
    # Copy requirements and install
    COPY requirements.txt .
