@@ -17,10 +17,10 @@
    # Create startup script
    RUN echo '#!/bin/bash\n\
 echo "Starting YukkiMusicBot..."\n\
-echo "Attempting time synchronization..."\n\
-# Try multiple time sync methods\n\
-(ntpsec-ntpdate -u pool.ntp.org 2>/dev/null || date -s "$(curl -s --max-time 10 http://worldtimeapi.org/api/timezone/Etc/UTC.txt | grep "datetime:" | cut -d" " -f2)" 2>/dev/null || true)\n\
-echo "Time sync completed (or skipped)"\n\
+echo "Setting environment variables..."\n\
+export PYROGRAM_SKIP_TIME_CHECK=1\n\
+export PYROGRAM_NO_TIME_SYNC=1\n\
+echo "Environment variables set"\n\
 echo "Starting Python application..."\n\
 exec python3 -m YukkiMusic' > /start.sh && chmod +x /start.sh
 
