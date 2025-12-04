@@ -37,7 +37,16 @@ class YukkiBot(Client):
                 await super().start()
                 break  # Success, exit retry loop
             except BadMsgNotification as e:
-                if e.value == 16:  # "The msg_id is too low, the client time has to be synchronized"
+                # Check if this is the time synchronization error (code 16)
+                if hasattr(e, 'error_code') and e.error_code == 16:
+                    LOGGER(__name__).warning(f"Time synchronization error (attempt {attempt + 1}/{max_retries}). Retrying...")
+                    if attempt < max_retries - 1:
+                        await asyncio.sleep(2)  # Wait before retry
+                        continue
+                    else:
+                        LOGGER(__name__).error("Failed to start bot after multiple attempts due to time synchronization issues")
+                        raise e
+                elif str(e) == "[16] The msg_id is too low, the client time has to be synchronized.":
                     LOGGER(__name__).warning(f"Time synchronization error (attempt {attempt + 1}/{max_retries}). Retrying...")
                     if attempt < max_retries - 1:
                         await asyncio.sleep(2)  # Wait before retry
