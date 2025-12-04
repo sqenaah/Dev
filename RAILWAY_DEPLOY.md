@@ -11,32 +11,33 @@
 Set these environment variables in your Railway project:
 
 ### Bot Configuration
-- `API_ID`: Your Telegram API ID (get from https://my.telegram.org)
-- `API_HASH`: Your Telegram API Hash (get from https://my.telegram.org)
-- `BOT_TOKEN`: Your bot token (get from @BotFather)
+- `API_ID`: `27638882`
+- `API_HASH`: `f745cdd5ddb46cf841d6990048f52935`
+- `BOT_TOKEN`: `8209900516:AAF_4fnkgUvhQd_WMTQttEYkMasq-cVOZFo`
 
 ### Database
-- `MONGO_DB_URI`: Your MongoDB connection string (get from MongoDB Atlas or similar)
+- `MONGO_DB_URI`: `mongodb+srv://ergibot:alobloglodlo@cluster0.c4oc3s5.mongodb.net/aria_db?retryWrites=true&w=majority`
 
 ### Logging
-- `LOG_GROUP_ID`: Your log group chat ID (create a private group and add your bot)
+- `LOG_GROUP_ID`: `-1003142281080`
 
 ### Bot Settings
-- `MUSIC_BOT_NAME`: Name for your music bot (default: YukkiMusicBot)
+- `MUSIC_BOT_NAME`: `YukkiMusicBot`
 
 ### Session
-- `STRING_SESSION`: Pyrogram string session (get from @yukkistringbot)
+- `STRING_SESSION`: `AgGlvGIAfoRpPE35J988vdTdciWrh4IFBvI5usTAnGE82ukbJoVgqdOWBmNWTKW98__OL4LSBL_O0Cc87A3TKKGn7R1jvz3ywyFhV1KzWUaSHSQkYyWWrVHlzYPrva08gd-NrcmEaRagbJQuGPhjy6m4b6sinJz8xFmrjg807wgl6k3aa9vTIPJVt4O_LqB_D4gtIJBuKyz50qoHQUD48rJbGybpFTQ33LSV2RL5zle8V3bs_0myWIzGzIeJlN9N39WJSWCyJ6G4PIg8yQdHTngPChg5wfU4A_kE5pJzLODXUalo0qaexQh7QYEaHNfMQRX5EI4jRhJd9LG_QagwxYr4p98CVAAAAAHya_vDAA`
 
 ## Deployment Steps
 
 1. Go to [Railway](https://railway.app) and create a new project
 2. Connect your GitHub repository (https://github.com/sqenaah/Dev)
 3. Railway will automatically detect the configuration and deploy
-4. Set the environment variables in Railway dashboard
+4. Set the environment variables in Railway dashboard (copy the values above)
 5. Deploy the project
 
 ## Additional Notes
 
 - The bot requires ffmpeg for audio/video processing
 - MongoDB is required for data persistence
-- Make sure all environment variables are set correctly before deployment
+- All environment variables are already configured with your values
+- Just copy and paste them into Railway dashboard
