@@ -1,7 +1,7 @@
    FROM python:3.10-slim
 
    # Install ffmpeg, git and time synchronization tools
-   RUN apt-get update && apt-get install -y ffmpeg git tzdata ntpdate
+   RUN apt-get update && apt-get install -y ffmpeg git tzdata ntpsec-ntpdate
 
    # Copy requirements and install
    COPY requirements.txt .
