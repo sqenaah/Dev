@@ -8,9 +8,11 @@
 # All rights reserved.
 
 import sys
+import asyncio
 
 from pyrogram import Client
 from pyrogram.types import BotCommand
+from pyrogram.errors import BadMsgNotification
 
 import config
 
@@ -28,7 +30,24 @@ class YukkiBot(Client):
         )
 
     async def start(self):
-        await super().start()
+        # Try to start the bot with retry mechanism for time sync issues
+        max_retries = 3
+        for attempt in range(max_retries):
+            try:
+                await super().start()
+                break  # Success, exit retry loop
+            except BadMsgNotification as e:
+                if e.value == 16:  # "The msg_id is too low, the client time has to be synchronized"
+                    LOGGER(__name__).warning(f"Time synchronization error (attempt {attempt + 1}/{max_retries}). Retrying...")
+                    if attempt < max_retries - 1:
+                        await asyncio.sleep(2)  # Wait before retry
+                        continue
+                    else:
+                        LOGGER(__name__).error("Failed to start bot after multiple attempts due to time synchronization issues")
+                        raise e
+                else:
+                    raise e  # Re-raise if it's a different BadMsgNotification error
+
         get_me = await self.get_me()
         self.username = get_me.username
         self.id = get_me.id
