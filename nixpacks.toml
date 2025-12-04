@@ -1,0 +1,8 @@
+[phases.setup]
+nixPkgs = ['...', 'ffmpeg', 'opus', 'python39', 'libopus-dev', 'libffi-dev']
+
+[phases.install]
+cmds = ['pip install -r requirements.txt']
+
+[start]
+cmd = "python3 -m YukkiMusic"
