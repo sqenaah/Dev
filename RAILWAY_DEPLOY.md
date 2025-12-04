@@ -13,7 +13,7 @@ Set these environment variables in your Railway project:
 ### Bot Configuration
 - `API_ID`: `27638882`
 - `API_HASH`: `f745cdd5ddb46cf841d6990048f52935`
-- `BOT_TOKEN`: `8209900516:AAF_4fnkgUvhQd_WMTQttEYkMasq-cVOZFo`
+- `BOT_TOKEN`: `8471862186:AAEmBU46Ms8zk5p7RENe6pLEeNsrGC1Uisc`
 
 ### Database
 - `MONGO_DB_URI`: `mongodb+srv://ergibot:alobloglodlo@cluster0.c4oc3s5.mongodb.net/aria_db?retryWrites=true&w=majority`
@@ -22,7 +22,7 @@ Set these environment variables in your Railway project:
 - `LOG_GROUP_ID`: `-1003142281080`
 
 ### Bot Settings
-- `MUSIC_BOT_NAME`: `YukkiMusicBot`
+- `MUSIC_BOT_NAME`: `ArmedMusicBot`
 
 ### Session
 - `STRING_SESSION`: `AgGlvGIAfoRpPE35J988vdTdciWrh4IFBvI5usTAnGE82ukbJoVgqdOWBmNWTKW98__OL4LSBL_O0Cc87A3TKKGn7R1jvz3ywyFhV1KzWUaSHSQkYyWWrVHlzYPrva08gd-NrcmEaRagbJQuGPhjy6m4b6sinJz8xFmrjg807wgl6k3aa9vTIPJVt4O_LqB_D4gtIJBuKyz50qoHQUD48rJbGybpFTQ33LSV2RL5zle8V3bs_0myWIzGzIeJlN9N39WJSWCyJ6G4PIg8yQdHTngPChg5wfU4A_kE5pJzLODXUalo0qaexQh7QYEaHNfMQRX5EI4jRhJd9LG_QagwxYr4p98CVAAAAAHya_vDAA`
