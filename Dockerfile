@@ -14,5 +14,15 @@
    ENV TZ=UTC
    RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
-   # Run with time sync
-   CMD ntpdate -u pool.ntp.org && python3 -m YukkiMusic
+   # Create startup script
+   RUN echo '#!/bin/bash\n\
+echo "Starting YukkiMusicBot..."\n\
+echo "Attempting time synchronization..."\n\
+# Try multiple time sync methods\n\
+(ntpsec-ntpdate -u pool.ntp.org 2>/dev/null || date -s "$(curl -s --max-time 10 http://worldtimeapi.org/api/timezone/Etc/UTC.txt | grep "datetime:" | cut -d" " -f2)" 2>/dev/null || true)\n\
+echo "Time sync completed (or skipped)"\n\
+echo "Starting Python application..."\n\
+exec python3 -m YukkiMusic' > /start.sh && chmod +x /start.sh
+
+   # Run startup script
+   CMD ["/start.sh"]
