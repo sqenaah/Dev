@@ -1,7 +1,7 @@
    FROM python:3.10-slim
 
-   # Install ffmpeg and git
-   RUN apt-get update && apt-get install -y ffmpeg git
+   # Install ffmpeg, git and time synchronization tools
+   RUN apt-get update && apt-get install -y ffmpeg git tzdata ntpdate
 
    # Copy requirements and install
    COPY requirements.txt .
@@ -10,5 +10,9 @@
    # Copy app
    COPY . .
 
-   # Run
-   CMD ["python3", "main.py"]
+   # Set timezone and sync time
+   ENV TZ=UTC
+   RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+
+   # Run with time sync
+   CMD ntpdate -u pool.ntp.org && python3 -m YukkiMusic
